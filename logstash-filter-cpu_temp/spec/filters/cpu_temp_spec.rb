@@ -21,9 +21,9 @@ describe LogStash::Filters::CPU_TEMP do
 
 		it "should extract timestamp and cpu temperature" do
 			plugin.filter(event)
-			expect(event.get("@timestamp").to_f).to eq(1492463445.876)
-			expect(event.get("cputemperature")).to eq(32.999)
-			expect(event.get("message")).to eq("12-27-2018 11:27:02 32.999")
+			expect(event.get("@timestamp").to_f).to eq(1539343622.0)
+			expect(event.get("temperature")).to eq(32.999)
+			expect(event.get("message")).to eq("12-10-2018 11:27:02 32.999")
 		end
 	end
 
@@ -32,22 +32,22 @@ describe LogStash::Filters::CPU_TEMP do
 		
 		it "should extract timestamp" do
 			plugin.filter(event)
-			expect(event.get("@timestamp").to_f).to eq(1492553570.878)
-			expect(event.get("cputemperature")).to eq(0.321)
-			expect(event.get("message")).to eq("24-12-2018 11:27:02 0.321")
+			expect(event.get("@timestamp").to_f).to eq(1545692322.0)
+			expect(event.get("temperature")).to eq(0.321)
+			expect(event.get("message")).to eq("24-12-2018 22:58:42 0.321")
 		end
 	end 
   end # end Positive Tests
   
   describe "Negative Tests - " do
 
-	describe "filter a wrong date time format - " do
+	describe "filter a wrong datetime format - " do
 		
 		let(:doc) { "12-50-2018 11:27:02 32.999" }
 
 		it "set a debuginfo field" do
 			plugin.filter(event)
-			expect(event.get("debuginfo")).to eq("Failed to parse date <12-50-2018>")
+			expect(event.get("debuginfo")).to eq("Failed to parse date <12-50-2018 11:27:02>")
 			expect(event.get("message")).to eq("12-50-2018 11:27:02 32.999")
 		end
 	end
@@ -59,7 +59,7 @@ describe LogStash::Filters::CPU_TEMP do
 		it "set a debuginfo field" do
 			plugin.filter(event)
 			expect(event.get("debuginfo")).to eq("cannot read cpu temperature")
-			expect(event.get("message")).to eq("12-12-2018 11:27:02 32,999")
+			expect(event.get("message")).to eq("12-10-2018 11:27:02 32,999")
 		end
 	end
   end # end Negative Tests

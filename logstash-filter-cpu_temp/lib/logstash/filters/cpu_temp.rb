@@ -21,7 +21,7 @@ class LogStash::Filters::CPU_TEMP < LogStash::Filters::Base
 	
 	# 12-10-2018 11:26:58 32.968
 	# Trying to match the timestamp
-	if /^([\d]{2}-[\d]{2}-[\d]{4}\s[\d]{2}:[\d]{2}:[\d]{2})\s)([^*]+)$/.match(event.get('message'))
+	if /^([\d]{2}-[\d]{2}-[\d]{4}\s[\d]{2}:[\d]{2}:[\d]{2})\s([^*]+)$/.match(event.get('message'))
 		
 		begin
 			rubytime = Time.strptime($1, "%d-%m-%Y %H:%M:%S")
@@ -34,7 +34,7 @@ class LogStash::Filters::CPU_TEMP < LogStash::Filters::Base
 		
 		event.set('message', $2)
 		# Trying to match the temperature
-		if /^([\d]+\.[\d]+)$/.match(event.get('message')
+		if /^([\d]+\.[\d]+)$/.match(event.get('message'))
 			event.set('temperature', $1.to_f)
 		else
 			event.set('debuginfo', "cannot read cpu temperature")
