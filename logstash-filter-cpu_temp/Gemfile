@@ -1,0 +1,4 @@
+#source 'https://repository.porscheinformatik.com/repository/rubygems-inhouse/'
+source 'https://rubygems.org/'
+gemspec
+gem 'simplecov', require: false, group: :test
