@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version         = '1.0.0'
   s.licenses = 'Apache-2.0'
   s.summary = "This example filter replaces the contents of the message field with the specified value."
-  s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
+  s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program. It's only purpose is for testing our schoolproject. Please don't use this in production."
   s.authors = "Danel Roelle, Manuel Metzger"
   s.require_paths = ["lib"]
 
