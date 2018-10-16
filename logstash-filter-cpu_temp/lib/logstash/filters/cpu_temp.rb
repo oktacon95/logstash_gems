@@ -25,6 +25,7 @@ class LogStash::Filters::CPU_TEMP < LogStash::Filters::Base
 		
 		begin
 			rubytime = Time.strptime($1, "%d-%m-%Y %H:%M:%S")
+			rubytime = rubytime - 7200
 			logstash_time = LogStash::Timestamp.new(rubytime)
 			event.set('@timestamp', logstash_time)
 		rescue Exception => e  
