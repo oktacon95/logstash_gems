@@ -21,7 +21,7 @@ describe LogStash::Filters::CPU_TEMP do
 
 		it "should extract timestamp and cpu temperature" do
 			plugin.filter(event)
-			expect(event.get("@timestamp").to_f).to eq(1539343622.0)
+			expect(event.get("@timestamp").to_f).to eq(1539336422.0)
 			expect(event.get("temperature")).to eq(32.999)
 			expect(event.get("message")).to eq("12-10-2018 11:27:02 32.999")
 		end
@@ -32,7 +32,7 @@ describe LogStash::Filters::CPU_TEMP do
 		
 		it "should extract timestamp" do
 			plugin.filter(event)
-			expect(event.get("@timestamp").to_f).to eq(1545692322.0)
+			expect(event.get("@timestamp").to_f).to eq(1545685122.0)
 			expect(event.get("temperature")).to eq(0.321)
 			expect(event.get("message")).to eq("24-12-2018 22:58:42 0.321")
 		end
